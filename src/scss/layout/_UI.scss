@@ -1,0 +1,61 @@
+@use 'base/variables' as v; 
+@use 'base/mixins' as m;
+
+/* Estilos que se agregan de forma general a toda la página */
+.contenedor-app {
+    @include m.tablet { /* Estilos que se aplican sólo al tamaño de una tablet */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);  // Divide en 2 partes iguales.
+        min-height: 100vh;  // Es equivalente a decir el 100%
+    }
+
+    .imagen {
+        background-image: url('../img/1.jpg');
+        background-size: cover;
+        background-position: center center;
+        height: 20rem;
+        
+        @include m.tablet {
+            height: auto;
+        }
+    }
+
+    .app {
+        width: 95%;     // Para evitar que abarque hasta las orillas de la ventana.
+        margin: 0 auto;     // Para centrar el contenido.
+        padding: 3rem 0;    // Padding arriba y abajo. A los lados es 0.
+
+        @include m.tablet {
+            overflow: scroll;
+        }
+    }
+}
+
+.barra {
+    margin: v.$separacion 0;
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boton {
+        @include m.boton(v.$negro, v.$blanco);
+        margin: 0;
+    }
+}
+
+.barra-servicios {
+    margin-bottom: v.$separacion;
+
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem
+    }
+
+    .boton {
+        margin: 0 0 1rem 0;
+    }
+}
